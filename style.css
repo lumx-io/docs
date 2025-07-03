@@ -433,3 +433,8 @@ div[role="menuitem"] {
 .text-primary-light {
   color: black !important;
 }
+
+[data-testid="copy-code-button"] > svg {
+  background-color: transparent !important;
+  fill: transparent !important;
+}

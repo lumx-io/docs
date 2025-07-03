@@ -3,14 +3,6 @@
     .flex.justify-between.text-xs.leading-6.border-b.rounded-t-xl.w-full.bg-black\/40.border-gray-900\/80 {
       border-bottom: 1px solid #27272a !important;
     }
-
-    [aria-label="Copy the contents from the code block"] {
-      svg {
-        fill: #a19ea6 !important;
-        background-color: #a19ea6 !important;
-        color: #a19ea6 !important;
-      }
-    }
   }
 
   [download="api-response.json"] {

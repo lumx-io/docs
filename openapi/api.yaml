@@ -181,7 +181,7 @@ paths:
                     targetCurrency: "USDC"
                     targetAmount: "10125.727780"
                     rate: "5.9255"
-                Locked:
+                "Locked by targetAmount":
                   value:
                     id: "123e4567-e89b-12d3-a456-426614174001"
                     type: "locked"
@@ -190,6 +190,16 @@ paths:
                     sourceAmount: "5925.55"
                     targetCurrency: "USDC"
                     targetAmount: "10000.000000"
+                    rate: "5.9255"
+                "Locked by sourceAmount":
+                  value:
+                    id: "123e4567-e89b-12d3-a456-426614174002"
+                    type: "locked"
+                    expiresAt: "2026-05-05T00:00:00Z"
+                    sourceCurrency: "BRL"
+                    sourceAmount: "6000.00"
+                    targetCurrency: "USDC"
+                    targetAmount: "1012.572778"
                     rate: "5.9255"
               schema:
                 $ref: "#/components/schemas/ExchangeRateResponse"
@@ -1234,9 +1244,7 @@ components:
       required:
         - type
         - sourceCurrency
-        - sourceAmount
-        - targetCurrency  
-        - targetAmount
+        - targetCurrency
     ExchangeRateResponse:
       allOf:
         - oneOf:
@@ -1347,10 +1355,24 @@ components:
           enum: [BRL, USDC, USDT]
           description: Exchange rate's target currency.
           example: "USDC"
-        targetAmount:
-          type: string
-          description: Exchange rate's target amount.
-          example: "10000.000000"
+      oneOf:
+        - type: object
+          title: "Locked by source amount"
+          properties:
+            sourceAmount:
+              type: string
+              description: Exchange rate's source amount.
+              example: "5925.55"
+          required: ["sourceAmount"]
+        - type: object
+          title: "Locked by target amount"
+          properties:
+            targetAmount:
+              type: string
+              description: Exchange rate's target amount.
+              example: "10000.000000"
+          required: ["targetAmount"]
+      required: ["type", "sourceCurrency", "targetCurrency"]
     TransactionResponse:
       type: object
       properties:

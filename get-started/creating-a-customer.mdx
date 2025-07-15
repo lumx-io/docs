@@ -1,0 +1,110 @@
+---
+title: 'Creating a customer'
+---
+
+This document outlines the required steps to create an Individual or Business customer in the **Lumx** platform. The following steps apply for a workflow using the API but you can also use the dashboard.
+
+<Warning>
+	We have a **link** available provided by our compliance partner, enabling
+	easier interactions and better rate of approval. It's available to use via API
+	or via dashboard.
+</Warning>
+
+## 1. Create a customer
+
+**Endpoint:** [`POST /customers`](/api-reference/customers/create-a-customer)
+
+Registers a new customer on the platform. Customers can be of type **Individual** or **Business**. The response includes an `id`, which is required for subsequent operations.
+
+<Note>
+	When creating a **Business** customer, it is mandatory to provide information
+	about any beneficiaries holding more than 20% ownership. These beneficiaries
+	will be automatically linked to the Business customer — there is **no need**
+	to create an Individual customer separately to associate them.
+</Note>
+---
+
+## 2. Upload required documents
+
+**Endpoint:** [`POST /customers/:id/documents`](/api-reference/customers/upload-a-document)
+
+Allows you to upload the documents required for identity and/or business verification. This API endpoint uses **FormData** to handle uploads.
+
+### Requirements by customer type
+
+#### Individual customers
+
+The following documents are mandatory:
+
+- One identity document (digital version also **accepted**):
+  - `id_card` (e.g., RG)
+  - `drivers_license` (e.g., CNH)
+  - `passport`
+- One `proof_of_address` (proof of address)
+
+<Warning>
+	If your document is double-sided, you should send first the front side, then
+	the back side.
+</Warning>
+
+#### Business customers
+
+The following documents are mandatory:
+
+- Legal incorporation document:
+  - `incorporation_articles` (e.g., articles of incorporation, certificate of formation, or state business registration extract)
+  - `incumbency_cert`
+  - `shareholder_registry`
+- Documents of all beneficiaries (same as required for Individual customers, in this case you should also send the **beneficiaryId** on the request)
+- One `proof_of_address` (dated within the last 3 months), such as:
+  - Valid lease agreement
+  - Utility bill (water, electricity, internet, etc.)
+  - Bank statement
+
+**Notes:**
+
+- Accepted file formats: `PDF`, `PNG`, or `JPEG`
+- Maximum file size per document: **50MB**
+- All documents must be clearly legible and fully visible
+
+### Common examples of valid proof of address (individuals)
+
+- Property tax bill (valid for up to 1 year)
+- Mortgage agreement
+- Landline phone bill
+- Utility bills (water, electricity, gas, internet)
+- Rental agreement signed by both landlord and tenant
+- Bank-issued credit card statement
+
+<Note>
+	Documents must include the customer’s **full name** and **residential
+	address**. Both physical (scanned) and digital (PDF) documents are accepted.
+</Note>
+
+---
+
+## 3. Start customer verification
+
+**Endpoint:** [`POST /customers/:id/verifications`](/api-reference/customers/start-a-customer-verification)
+
+Initiates the KYC/KYB verification process for the customer.  
+To execute this operation, **all required documents** for the respective customer type must have been previously uploaded using the **Upload Documents** API, including beneficiaries if applicable.
+
+---
+
+## 4. Check verification status
+
+**Endpoint:** [`GET /customers/:id/verifications`](/api-reference/customers/read-a-customer-verification)
+
+Returns the current verification status of the customer: `approved`, `temporary_rejection`, `final_rejection`, `pending`.
+
+This API allows you to monitor the status of the verification process initiated via the **Start Customer Verification** endpoint. The response includes:
+
+- Overall customer verification status
+- Status of each submitted document
+- Details on any pending or rejected documents
+
+<Note>
+	It can take up to a day for a KYB to be processed, for a KYC it should only
+	take a couple minutes.
+</Note>

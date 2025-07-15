@@ -1362,13 +1362,6 @@ components:
                           example:
                             - screenshot
                             - unsatisfactory_photos
-                        rejectSubLabels:
-                          type: array
-                          description: Customer verification's reject sub labels.
-                          example:
-                            - proofOfAddress_listOfDocs
-                            - badPhoto
-                            - proofOfAddress
     ExchangeRateRequest:
       allOf:
         - oneOf:

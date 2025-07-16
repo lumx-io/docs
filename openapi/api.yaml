@@ -134,6 +134,11 @@ paths:
           description: Resource successfully retrieved.
           content:
             application/json:
+              examples:
+                Individual:
+                  $ref: "#/components/examples/CustomerVerificationIndividualResponse"
+                Business:
+                  $ref: "#/components/examples/CustomerVerificationBusinessResponse"
               schema:
                 $ref: "#/components/schemas/CustomerVerificationResponse"
       security:
@@ -407,6 +412,7 @@ components:
             type: "individual"
             name: "William Default"
             taxId: "123.456.789-00"
+            link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
             birthDate: "1990-01-01"
             country: "BRA"
             email: "william.default@example.com"
@@ -441,13 +447,14 @@ components:
                 daily: "10000.00"
                 monthly: "100000.00"
             createdAt: "2021-01-01T00:00:00Z"
-            updatedAt: "2021-01-01T00:00:00Z"  
+            updatedAt: "2021-01-01T00:00:00Z"
     CustomerIndividualExample:
       value:
         id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
         type: "individual"
         name: "William Default"
         taxId: "123.456.789-00"
+        link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
         birthDate: "1990-01-01"
         country: "BRA"
         email: "william.default@example.com"
@@ -464,9 +471,9 @@ components:
           status: "pending"
           level: "standard"
         transactionLimits:
-            single: "1000.00"
-            daily: "10000.00"
-            monthly: "100000.00"
+          single: "1000.00"
+          daily: "10000.00"
+          monthly: "100000.00"
         createdAt: "2021-01-01T00:00:00Z"
         updatedAt: "2021-01-01T00:00:00Z"
     CustomerBusinessExample:
@@ -475,6 +482,7 @@ components:
         type: "business"
         legalName: "Lumx S.A"
         taxId: "42.887.120/0001-00"
+        link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
         incorporationDate: "2020-01-01"
         country: "BRA"
         email: "hello@lumx.io"
@@ -483,10 +491,14 @@ components:
             type: "individual"
             name: "William Default"
             taxId: "123.456.789-00"
+            link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
             birthDate: "1990-01-01"
             country: "BRA"
             email: "william.default@example.com"
             sharePercentage: 20
+            verification:
+              status: "approved"
+              level: "standard"
         walletAddress: "0x1234567890123456789012345678901234567890"
         blockExplorerUrl: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
         balances:
@@ -506,43 +518,15 @@ components:
         createdAt: "2021-01-01T00:00:00Z"
         updatedAt: "2021-01-01T00:00:00Z"
     CustomerCreateIndividualExample:
-       value:
+      value:
         id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
         type: "individual"
         name: "William Default"
         taxId: "123.456.789-00"
+        link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
         birthDate: "1990-01-01"
         country: "BRA"
         email: "william.default@example.com"
-        walletAddress: "0x1234567890123456789012345678901234567890"
-        blockExplorerUrl: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
-        verification:
-          status: "pending"
-          level: "standard"
-        transactionLimits:
-            single: "1000.00"
-            daily: "10000.00"
-            monthly: "100000.00"
-        createdAt: "2021-01-01T00:00:00Z"
-        updatedAt: "2021-01-01T00:00:00Z"
-    CustomerCreateBusinessExample:
-      value:
-        id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-        type: "business"
-        legalName: "Lumx S.A"
-        taxId: "42.887.120/0001-00"
-        incorporationDate: "2020-01-01"
-        country: "BRA"
-        email: "hello@lumx.io"
-        beneficiaries:
-          - id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-            type: "individual"
-            name: "William Default"
-            taxId: "123.456.789-00"
-            birthDate: "1990-01-01"
-            country: "BRA"
-            email: "william.default@example.com"
-            sharePercentage: 20
         walletAddress: "0x1234567890123456789012345678901234567890"
         blockExplorerUrl: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
         verification:
@@ -554,6 +538,80 @@ components:
           monthly: "100000.00"
         createdAt: "2021-01-01T00:00:00Z"
         updatedAt: "2021-01-01T00:00:00Z"
+    CustomerCreateBusinessExample:
+      value:
+        id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+        type: "business"
+        legalName: "Lumx S.A"
+        taxId: "42.887.120/0001-00"
+        link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
+        incorporationDate: "2020-01-01"
+        country: "BRA"
+        email: "hello@lumx.io"
+        beneficiaries:
+          - id: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+            type: "individual"
+            name: "William Default"
+            taxId: "123.456.789-00"
+            link: "https://in.sumsub.com/websdk/p/sbx_aA00bB11cC33dD44"
+            birthDate: "1990-01-01"
+            country: "BRA"
+            email: "william.default@example.com"
+            sharePercentage: 20
+            verification:
+              status: "pending"
+              level: "standard"
+        walletAddress: "0x1234567890123456789012345678901234567890"
+        blockExplorerUrl: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
+        verification:
+          status: "pending"
+          level: "standard"
+        transactionLimits:
+          single: "1000.00"
+          daily: "10000.00"
+          monthly: "100000.00"
+        createdAt: "2021-01-01T00:00:00Z"
+        updatedAt: "2021-01-01T00:00:00Z"
+    CustomerVerificationIndividualResponse:
+      value:
+        customerId: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+        status: "pending"
+        level: "standard"
+        statusReason:
+          rejectLabels:
+            - screenshot
+            - unsatisfactory_photos
+          documents:
+            - type: "passport"
+              status: "temporary_rejection"
+              comment: "Screenshots aren't accepted. Please upload a live photo of the document."
+              rejectLabels:
+                - screenshot
+                - unsatisfactory_photos
+            - type: "utility_bill"
+              status: "temporary_rejection"
+    CustomerVerificationBusinessResponse:
+      value:
+        customerId: "c85cb5ef-0574-4450-806d-195944f1e309"
+        status: "pending"
+        level: "standard"
+        beneficiaries:
+          id: "6737ca44-0fc7-4523-a1db-de014a865302"
+          status: "pending"
+          level: "standard"
+          statusReason:
+            rejectLabels:
+              - screenshot
+              - unsatisfactory_photos
+            documents:
+              - type: "passport"
+                status: "temporary_rejection"
+                comment: "Screenshots aren't accepted. Please upload a live photo of the document."
+                rejectLabels:
+                  - screenshot
+                  - unsatisfactory_photos
+              - type: "utility_bill"
+                status: "temporary_rejection"
     TransactionOnrampAwaitingFundsExample:
       value:
         id: "123e4567-e89b-12d3-a456-426614174000"
@@ -707,7 +765,7 @@ components:
           currency: "USDC"
           from: "123e4567-e89b-12d3-a456-426614174001"
           to: "123e4567-e89b-12d3-a456-426614174002"
-          amount: "1000.000000" 
+          amount: "1000.000000"
         state:
           status: "processing"
     TransactionTransferSuccessExample:
@@ -719,7 +777,7 @@ components:
           currency: "USDC"
           from: "123e4567-e89b-12d3-a456-426614174001"
           to: "123e4567-e89b-12d3-a456-426614174002"
-          amount: "1000.000000" 
+          amount: "1000.000000"
         state:
           status: "success"
           blockchain:
@@ -771,45 +829,45 @@ components:
                   title: Individual
                 - $ref: "#/components/schemas/CustomerIndividual"
             - allOf:
-              - type: object
-                description: Customer type is business.
-                title: Business
-              - $ref: "#/components/schemas/CustomerBusiness"
-              - type: object
-                properties:
-                  beneficiaries:
-                    type: array
-                    description: List of beneficiaries associated with this business. Only individuals with a share percentage of 20% or greater are required.
-                    items: 
-                      type: object 
-                      allOf:
-                        - $ref: "#/components/schemas/CustomerIndividual"
-                        - type: object
-                          properties:
-                            type:
-                              description: Beneficiary's type.
-                            name:
-                              description: Beneficiary's name.
-                            taxId:
-                              description: Beneficiary's tax ID.
-                            birthDate:
-                              description: Beneficiary's birth date.
-                            country:
-                              description: Beneficiary's country.
-                            email:
-                              description: Beneficiary's email.
-                            sharePercentage:
-                              type: number
-                              description: The share percentage of the beneficiary.
-                              example: 20
-                        - required:
-                            - type
-                            - name
-                            - taxId
-                            - birthDate
-                            - country
-                            - email
-                            - sharePercentage
+                - type: object
+                  description: Customer type is business.
+                  title: Business
+                - $ref: "#/components/schemas/CustomerBusiness"
+                - type: object
+                  properties:
+                    beneficiaries:
+                      type: array
+                      description: List of beneficiaries associated with this business. Only individuals with a share percentage of 20% or greater are required.
+                      items:
+                        type: object
+                        allOf:
+                          - $ref: "#/components/schemas/CustomerIndividual"
+                          - type: object
+                            properties:
+                              type:
+                                description: Beneficiary's type.
+                              name:
+                                description: Beneficiary's name.
+                              taxId:
+                                description: Beneficiary's tax ID.
+                              birthDate:
+                                description: Beneficiary's birth date.
+                              country:
+                                description: Beneficiary's country.
+                              email:
+                                description: Beneficiary's email.
+                              sharePercentage:
+                                type: number
+                                description: The share percentage of the beneficiary.
+                                example: 20
+                          - required:
+                              - type
+                              - name
+                              - taxId
+                              - birthDate
+                              - country
+                              - email
+                              - sharePercentage
       required:
         - id
         - type
@@ -839,38 +897,6 @@ components:
                   description: Customer type is business.
                   title: Business
                 - $ref: "#/components/schemas/CustomerBusiness"
-                - type: object
-                  properties:
-                    beneficiaries:
-                      type: array
-                      description: List of beneficiaries associated with this business.
-                      items: 
-                        type: object 
-                        allOf:
-                          - $ref: "#/components/schemas/CustomerIndividual"
-                          - type: object
-                            properties:
-                              id:
-                                type: string
-                                description: Beneficiary's unique identifier.
-                                format: uuid
-                                example: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-                              type:
-                                description: Beneficiary's type.
-                              name:
-                                description: Beneficiary's name.
-                              taxId:
-                                description: Beneficiary's tax ID.
-                              birthDate:
-                                description: Beneficiary's birth date.
-                              country:
-                                description: Beneficiary's country.
-                              email:
-                                description: Beneficiary's email.
-                              sharePercentage:
-                                type: number
-                                description: The share percentage of the beneficiary.
-                                example: 20
         - type: object
           properties:
             taxId:
@@ -924,16 +950,16 @@ components:
               description: Customer's unique identifier.
               format: uuid
         - oneOf:
-          - allOf:
-            - type: object
-              description: Customer type is individual.
-              title: Individual
-            - $ref: "#/components/schemas/CustomerIndividual"
-          - allOf:
-            - type: object
-              description: Customer type is business.
-              title: Business
-            - $ref: "#/components/schemas/CustomerBusiness"
+            - allOf:
+                - type: object
+                  description: Customer type is individual.
+                  title: Individual
+                - $ref: "#/components/schemas/CustomerIndividual"
+            - allOf:
+                - type: object
+                  description: Customer type is business.
+                  title: Business
+                - $ref: "#/components/schemas/CustomerBusiness"
         - type: object
           properties:
             taxId:
@@ -1065,94 +1091,94 @@ components:
           example: "2021-01-01T00:00:00Z"
     CustomerCreateResponse:
       allOf:
-          - type: object
-            properties:
-              id:
-                type: string
-                description: Customer's unique identifier.
-                format: uuid
-                readOnly: true
-          - oneOf:
-              - $ref: "#/components/schemas/CustomerIndividual"
-                description: Customer type is individual.
-                title: Individual
-              - allOf:
-                  - type: object
-                    description: Customer type is business.
-                    title: Business
-                  - $ref: "#/components/schemas/CustomerBusiness"
-                  - type: object
-                    properties:
-                      beneficiaries:
-                        type: array
-                        description: List of beneficiaries associated with this business.
-                        items: 
-                          type: object 
-                          allOf:
-                            - $ref: "#/components/schemas/CustomerIndividual"
-                            - type: object
-                              properties:
-                                id:
-                                  type: string
-                                  description: Beneficiary's unique identifier.
-                                  format: uuid
-                                  example: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-                                type:
-                                  description: Beneficiary's type.
-                                name:
-                                  description: Beneficiary's name.
-                                taxId:
-                                  description: Beneficiary's tax ID.
-                                email:
-                                  description: Beneficiary's email.
-                                birthDate:
-                                  description: Beneficiary's birth date.
-                                country:
-                                  description: Beneficiary's country.
-                                sharePercentage:
-                                  type: number
-                                  description: The share percentage of the beneficiary.
-                                  example: 20
-          - type: object
-            properties:
-              taxId:
-                description: Customer's tax ID.
-              walletAddress:
-                type: string
-                description: Customer's wallet address.
-                example: "0x1234567890123456789012345678901234567890"
-              blockExplorerUrl:
-                type: string
-                description: Customer's block explorer URL.
-                example: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
-              verification:
-                $ref: "#/components/schemas/CustomerVerification"
-              transactionLimits:
-                type: object
-                description: Verification's transaction limits.
-                properties:
-                  single:
-                    type: string
-                    description: Single transaction limit for the customer's KYC.
-                    example: "1000.00"
-                  daily:
-                    type: string
-                    description: Daily limit for the customer's KYC.
-                    example: "10000.00"
-                  monthly:
-                    type: string
-                    description: Monthly limit for the customer's KYC.
-                    example: "100000.00"
-              createdAt:
-                type: string
-                description: Creation date and time (UTC).
-                format: date-time
-                example: "2021-01-01T00:00:00Z"
-              updatedAt:
-                type: string
-                description: Last update date and time (UTC).
-                format: date-time
-                example: "2021-01-01T00:00:00Z"
+        - type: object
+          properties:
+            id:
+              type: string
+              description: Customer's unique identifier.
+              format: uuid
+              readOnly: true
+        - oneOf:
+            - $ref: "#/components/schemas/CustomerIndividual"
+              description: Customer type is individual.
+              title: Individual
+            - allOf:
+                - type: object
+                  description: Customer type is business.
+                  title: Business
+                - $ref: "#/components/schemas/CustomerBusiness"
+                - type: object
+                  properties:
+                    beneficiaries:
+                      type: array
+                      description: List of beneficiaries associated with this business.
+                      items:
+                        type: object
+                        allOf:
+                          - $ref: "#/components/schemas/CustomerIndividual"
+                          - type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Beneficiary's unique identifier.
+                                format: uuid
+                                example: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+                              type:
+                                description: Beneficiary's type.
+                              name:
+                                description: Beneficiary's name.
+                              taxId:
+                                description: Beneficiary's tax ID.
+                              email:
+                                description: Beneficiary's email.
+                              birthDate:
+                                description: Beneficiary's birth date.
+                              country:
+                                description: Beneficiary's country.
+                              sharePercentage:
+                                type: number
+                                description: The share percentage of the beneficiary.
+                                example: 20
+        - type: object
+          properties:
+            taxId:
+              description: Customer's tax ID.
+            walletAddress:
+              type: string
+              description: Customer's wallet address.
+              example: "0x1234567890123456789012345678901234567890"
+            blockExplorerUrl:
+              type: string
+              description: Customer's block explorer URL.
+              example: "https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890"
+            verification:
+              $ref: "#/components/schemas/CustomerVerification"
+            transactionLimits:
+              type: object
+              description: Verification's transaction limits.
+              properties:
+                single:
+                  type: string
+                  description: Single transaction limit for the customer's KYC.
+                  example: "1000.00"
+                daily:
+                  type: string
+                  description: Daily limit for the customer's KYC.
+                  example: "10000.00"
+                monthly:
+                  type: string
+                  description: Monthly limit for the customer's KYC.
+                  example: "100000.00"
+            createdAt:
+              type: string
+              description: Creation date and time (UTC).
+              format: date-time
+              example: "2021-01-01T00:00:00Z"
+            updatedAt:
+              type: string
+              description: Last update date and time (UTC).
+              format: date-time
+              example: "2021-01-01T00:00:00Z"
     CustomerUploadDocumentRequest:
       type: object
       properties:
@@ -1168,7 +1194,15 @@ components:
             type:
               type: string
               description: Document type.
-              enum: [id_card, passport, drivers_license, utility_bill, incorporation_articles, proof_of_address]
+              enum:
+                [
+                  id_card,
+                  passport,
+                  drivers_license,
+                  utility_bill,
+                  incorporation_articles,
+                  proof_of_address,
+                ]
               example: "id_card"
             country:
               type: string
@@ -1202,7 +1236,8 @@ components:
         status:
           type: string
           description: Customer verification's status.
-          enum: ["pending", "approved", "final_rejection", "temporary_rejection"]
+          enum:
+            ["pending", "approved", "final_rejection", "temporary_rejection"]
           example: "temporary_rejection"
         level:
           type: string
@@ -1228,6 +1263,105 @@ components:
                 - proofOfAddress
                 - differentDocs
                 - badPhoto_screenshot
+            documents:
+              type: array
+              description: Customer verification's documents that were rejected.
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Document type.
+                    enum:
+                      [
+                        id_card,
+                        passport,
+                        drivers_license,
+                        utility_bill,
+                        incorporation_articles,
+                        proof_of_address,
+                      ]
+                  status:
+                    type: string
+                    description: Document status.
+                    enum:
+                      [pending, approved, final_rejection, temporary_rejection]
+                  comment:
+                    type: string
+                    description: Document comment.
+                  rejectLabels:
+                    type: array
+                    description: Customer verification's reject labels.
+                    example:
+                      - screenshot
+                      - unsatisfactory_photos
+        beneficiaries:
+          type: array
+          description: List of beneficiaries associated with this business.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Beneficiary's unique identifier.
+                format: uuid
+                example: "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+              status:
+                type: string
+                description: Beneficiary's status.
+                enum: [pending, approved, final_rejection, temporary_rejection]
+                example: "pending"
+              level:
+                type: string
+                description: Beneficiary's level.
+                example: "standard"
+              statusReason:
+                type: object
+                description: Beneficiary's status reason.
+                properties:
+                  rejectLabels:
+                    type: array
+                    description: Beneficiary's reject labels.
+                    example:
+                      - screenshot
+                      - unsatisfactory_photos
+                  documents:
+                    type: array
+                    description: Beneficiary's documents that were rejected.
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: Document type.
+                          enum:
+                            [
+                              id_card,
+                              passport,
+                              drivers_license,
+                              utility_bill,
+                              incorporation_articles,
+                              proof_of_address,
+                            ]
+                        status:
+                          type: string
+                          description: Document status.
+                          enum:
+                            [
+                              pending,
+                              approved,
+                              final_rejection,
+                              temporary_rejection,
+                            ]
+                        comment:
+                          type: string
+                          description: Document comment.
+                        rejectLabels:
+                          type: array
+                          description: Customer verification's reject labels.
+                          example:
+                            - screenshot
+                            - unsatisfactory_photos
     ExchangeRateRequest:
       allOf:
         - oneOf:

@@ -1,17 +1,73 @@
 ---
 title: "Troubleshooting"
-description: "Find out the common extended error messages you may encounter while using our system"
+description: "Common API error messages and how to resolve them."
 ---
 
-Here's a list of common errors on the API. Didn't find the solution? Please, let us know in [our community](https://join.slack.com/t/lumxprotocol/shared_invite/zt-2r5c6zxk3-5QGGZ3mUtLel5te1dI). In some instances, along with these messages, you may receive a unique logId. This logId serves as a distinct identification for the error encountered and can be essential when contacting our technical support for a quick and efficient resolution of the issue.
+If you're encountering issues while using our API, this page outlines the most common errors and their meanings. If your issue isn’t listed, feel free to reach out in [our community Slack](https://join.slack.com/t/lumxprotocol/shared_invite/zt-2r5c6zxk3-5QGGZ3mUtLel5te1dI).
 
-| Status | Name                   | Description                                                                                                                                                |
-| ------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400    | Bad Request            | Invalid parameters structure on request body.                                                                                                              |
-| 401    | Unauthorized           | API_KEY is invalid or missing.                                                                                                                             |
-| 403    | Forbidden              | API_KEY can't access this resource.                                                                                                                        |
-| 404    | Not Found              | The resource could not be found.                                                                                                                           |
-| 409    | Conflict               | The resource could not created or updated due to a conflicting condition.                                                                                                                           |
-| 415    | Unsupported Media Type | Content-Type doesn't match with the request body.                                                                                                          |
-| 429    | Too Many Requests      | Rate limit exceeded.                                                                                                                                       |
-| 500    | Internal Server Error  | This is an unexpected server error. Please, [contact us](https://join.slack.com/t/lumxprotocol/shared_invite/zt-2r5c6zxk3-5QGGZ3mUtLel5te1dI) for support. |
+> In some cases, you may receive a unique `code` alongside the error message. This identifier helps our support team trace the issue faster.
+
+---
+
+## HTTP Status Errors
+
+| Status | Error Name             | Description                                                                                                                                                    |
+| ------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400    | Bad Request            | The request body has an invalid structure or missing parameters.                                                                                               |
+| 401    | Unauthorized           | The `API_KEY` is missing or invalid.                                                                                                                           |
+| 403    | Forbidden              | The `API_KEY` does not have permission to access the requested resource.                                                                                       |
+| 404    | Not Found              | The requested resource could not be found.                                                                                                                     |
+| 409    | Conflict               | A conflicting condition prevented creation or update of the resource.                                                                                          |
+| 415    | Unsupported Media Type | The `Content-Type` of the request does not match the expected format (e.g., JSON).                                                                             |
+| 429    | Too Many Requests      | You have exceeded the allowed number of requests. Please slow down and try again later.                                                                        |
+| 500    | Internal Server Error  | An unexpected error occurred on our servers. [Contact us](https://join.slack.com/t/lumxprotocol/shared_invite/zt-2r5c6zxk3-5QGGZ3mUtLel5te1dI) for assistance. |
+
+---
+
+## Common Error Codes (`code`)
+
+Below are common error codes that may be included in error responses for better debugging.
+
+| Code  | Category              | Description                         |
+| ----- | --------------------- | ----------------------------------- |
+| L0001 | Authentication        | Invalid API key.                    |
+| L0002 | Authentication        | Invalid authentication token.       |
+| L0003 | Authentication        | Insufficient permissions.           |
+| L0004 | Authentication        | Authentication token has expired.   |
+| L0005 | Customer              | Customer not found.                 |
+| L0006 | Customer              | Access denied to customer.          |
+| L0007 | Customer              | Failed to create customer wallet.   |
+| L0008 | Customer              | Invalid customer document.          |
+| L0009 | Customer              | Customer data validation error.     |
+| L0010 | Customer              | Customer wallet not found.          |
+| L0011 | Customer              | Customer creation failed.           |
+| L0014 | Customer              | Customer not KYC-approved.          |
+| L0012 | Transaction           | Transaction not found.              |
+| L0013 | Transaction           | Insufficient balance.               |
+| L0015 | Transaction           | Invalid transaction status.         |
+| L0016 | Transaction           | Transaction creation failed.        |
+| L0017 | Transaction           | Transaction update failed.          |
+| L0018 | Transaction           | Related customer not found.         |
+| L0019 | Transaction           | Invalid transaction amount.         |
+| L0020 | Transaction           | Invalid transaction currency.       |
+| L0021 | FX (Foreign Exchange) | Error fetching exchange rate.       |
+| L0022 | FX (Foreign Exchange) | FX rate not found.                  |
+| L0023 | FX (Foreign Exchange) | FX rate calculation error.          |
+| L0024 | FX (Foreign Exchange) | FX service unavailable.             |
+| L0025 | FX (Foreign Exchange) | FX rate has expired.                |
+| L0026 | Blockchain            | Blockchain wallet creation error.   |
+| L0027 | Blockchain            | Blockchain service unavailable.     |
+| L0028 | Blockchain            | Failed to fetch blockchain balance. |
+| L0029 | Blockchain            | Invalid blockchain address.         |
+| L0030 | Blockchain            | Blockchain transaction not found.   |
+| L0031 | Applicant             | Applicant creation error.           |
+| L0032 | Applicant             | Applicant service unavailable.      |
+| L0033 | Applicant             | Applicant not found.                |
+| L0034 | Applicant             | Applicant validation error.         |
+| L0035 | Generic Validation    | Bad request.                        |
+| L0036 | Generic Validation    | Invalid request body.               |
+| L0037 | Generic Validation    | Invalid data type.                  |
+
+---
+
+If you're still having trouble, contact support with your `code` and request details to get help quickly.

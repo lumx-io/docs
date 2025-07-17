@@ -1,5 +1,5 @@
 ---
-title: "Compliance Requirements"
+title: 'Compliance Requirements'
 ---
 
 All entities using Lumx services must agree to our [Terms and Conditions (“TC”)](https://lumx.io/terms-of-use) and our [Privacy Policy](https://lumx.io/privacy-policy). The preferred approach is to incorporate these documents within your own, ensuring your end users review and accept the terms before using Lumx services.
@@ -12,7 +12,7 @@ Alternatively, we provide a dedicated Terms and Conditions link, which can be sh
 Every beneficiary must undergo a KYC/B (Know Your Customer/Business) process for identity verification.
 
 <Note>
-  KYC and KYB may not be available for beneficiaries in specific jurisdictions.
+	KYC and KYB may not be available for beneficiaries in specific jurisdictions.
 </Note>
 
 Below are the required data according to the type of beneficiary (individual or business) and the KYC/B level applied:
@@ -51,6 +51,7 @@ To initiate the process, please email [**<u>compliance@lumx.io</u>**](mailto:com
 _(Optionally include your company name for faster identification, e.g. “Request for Enhanced KYC/B – Transaction Limit Increase (Acme Ltd.)”)_
 
 **Estimated Review Time: Up to 5 business days**
+
 Documents that may be requested include:
 
 - **Proof of Source of Funds** (e.g. bank statements, investment records, or sale agreements)
@@ -69,11 +70,11 @@ These requirements help ensure the secure and compliant handling of higher-volum
 | Monthly         | \$100,000    | \$1,000,000  |
 
 <Note>
-  The values indicated above do not represent the transaction limits permitted
-  on the Lumx platform. They are exclusively used to determine which levels of
-  KYC or KYB will be applied according to the intended transaction amounts. In
-  other words, as transaction amounts increase, more stringent verification and
-  compliance levels are required to ensure security and regulatory compliance.
+	The values indicated above do not represent the transaction limits permitted
+	on the Lumx platform. They are exclusively used to determine which levels of
+	KYC or KYB will be applied according to the intended transaction amounts. In
+	other words, as transaction amounts increase, more stringent verification and
+	compliance levels are required to ensure security and regulatory compliance.
 </Note>
 
 It is emphasized that in cases where the relationship occurs directly between Lumx and the Beneficiary, operational limits will be defined based on the KYB documentation submitted by the entity and may vary from the previously established limits.
@@ -82,14 +83,15 @@ It is emphasized that in cases where the relationship occurs directly between Lu
 
 KYC/KYB status can progress according to the following flow:
 
-- `PENDING` → `UNDER REVIEW` → `APPROVED`
+- `not_started` → `under_verification` → `approved`
 
-For low-risk regions, the review process can be completed within seconds. However, in high-risk locations or cases requiring manual review, verification may take 1 to 2 business days.
-
-- `PENDING` → `UNDER REVIEW` → `CHANGES REQUESTED` → `APPROVED / REJECTED`
-
-If the entity's provided information is incomplete or inconsistent, Lumx may request corrections or additional documents before concluding the review.
-
-- `PENDING` → `UNDER REVIEW` → `REJECTED`
+For low-risk regions, the review process can be completed within seconds. However, in high-risk locations or cases requiring manual review, verification may take **1 to 2 business days**.
 
 In some cases, an entity may be rejected if the submitted information is invalid or inconsistent, such as an incorrect tax identification number or unrecognized documents.
+If this happens, they can **submit the corrected documents again**. The status progression is as follows:
+
+- `not_started` → `under_verification` → `temporary_rejection` → `under_verification` → `approved`
+
+If a customer is fully rejected, the following status order will occur:
+
+- `not_started` → `under_verification` → `final_rejection`

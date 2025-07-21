@@ -1988,6 +1988,10 @@ components:
           type: string
           description: Partner fee's name.
           example: 'Fee 7'
+        isDefault:
+          type: boolean
+          description: Whether this partner fee is the default one.
+          example: false
         fees:
           type: object
           description: Fee structure for the partner.
@@ -2033,6 +2037,10 @@ components:
           type: string
           description: Partner fee's name.
           example: 'Fee name'
+        isDefault:
+          type: boolean
+          description: Whether this partner fee is the default one.
+          example: false
         fees:
           type: object
           description: Fee structure.

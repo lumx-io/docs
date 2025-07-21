@@ -463,6 +463,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PartnerFeeResponse'
+      security:
+        - apiKey: []
   /partner-fees/{id}:
     get:
       tags:

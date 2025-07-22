@@ -1798,6 +1798,11 @@ components:
               type: string
               description: Payment rail's key value.
               example: '123.456.789-00'
+        partnerFeesId:
+          type: string
+          description: Partner fees id to be used for this transaction. If not provided, the default partner fee will be used.
+          format: uuid
+          example: '123e4567-e89b-12d3-a456-426614174004'
       required:
         - customerId
         - sourceCurrency

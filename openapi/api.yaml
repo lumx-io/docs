@@ -206,7 +206,7 @@ paths:
                     targetCurrency: 'USDC'
                     targetAmount: '1012.572778'
                     rate: '5.9255'
-                'Locked by sourceAmount with partnerFeesId':
+                'Locked by sourceAmount with partnerFeeId':
                   value:
                     id: '123e4567-e89b-12d3-a456-426614174002'
                     type: 'locked'
@@ -216,8 +216,8 @@ paths:
                     targetCurrency: 'USDC'
                     targetAmount: '1012.572778'
                     rate: '5.9255'
-                    partnerFeesId: '123e4567-e89b-12d3-a456-426614174004'
-                'Locked by targetAmount with partnerFeesId':
+                    partnerFeeId: '123e4567-e89b-12d3-a456-426614174004'
+                'Locked by targetAmount with partnerFeeId':
                   value:
                     id: '123e4567-e89b-12d3-a456-426614174001'
                     type: 'locked'
@@ -227,7 +227,7 @@ paths:
                     targetCurrency: 'USDC'
                     targetAmount: '10000.000000'
                     rate: '5.9255'
-                    partnerFeesId: '123e4567-e89b-12d3-a456-426614174004'
+                    partnerFeeId: '123e4567-e89b-12d3-a456-426614174004'
               schema:
                 $ref: '#/components/schemas/ExchangeRateResponse'
       security:
@@ -1528,9 +1528,9 @@ components:
                       type: string
                       description: Exchange rate's target amount.
                       example: '10000.000000'
-                    partnerFeesId:
+                    partnerFeeId:
                       type: string
-                      description: Exchange rate's partner fees id. If not provided, the default partner fee will be used.
+                      description: Exchange rate's partner fee id. If not provided, the default partner fee will be used.
                       format: uuid
                       example: '123e4567-e89b-12d3-a456-426614174004'
         - type: object
@@ -1579,9 +1579,9 @@ components:
           enum: [BRL, USDC, USDT]
           description: Exchange rate's target currency.
           example: 'USDC'
-        partnerFeesId:
+        partnerFeeId:
           type: string
-          description: Partner fees id to be used for this exchange rate.
+          description: Partner fee id to be used for this exchange rate.
           format: uuid
           example: '123e4567-e89b-12d3-a456-426614174004'
       oneOf:
@@ -1666,9 +1666,9 @@ components:
               enum: [pix]
               description: Payment rail to be used.
               example: 'pix'
-        partnerFeesId:
+        partnerFeeId:
           type: string
-          description: Partner fees id to be used for this transaction. If not provided, the default partner fee will be used.
+          description: Partner fee id to be used for this transaction. If not provided, the default partner fee will be used.
           format: uuid
           example: '123e4567-e89b-12d3-a456-426614174004'
       required:
@@ -1798,9 +1798,9 @@ components:
               type: string
               description: Payment rail's key value.
               example: '123.456.789-00'
-        partnerFeesId:
+        partnerFeeId:
           type: string
-          description: Partner fees id to be used for this transaction. If not provided, the default partner fee will be used.
+          description: Partner fee id to be used for this transaction. If not provided, the default partner fee will be used.
           format: uuid
           example: '123e4567-e89b-12d3-a456-426614174004'
       required:

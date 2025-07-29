@@ -504,7 +504,7 @@ components:
             walletAddress: '0x1234567890123456789012345678901234567890'
             blockExplorerUrl: 'https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890'
             verification:
-              status: 'pending'
+              status: 'not_started'
               level: 'standard'
             transactionLimits:
               single: '1000.00'
@@ -525,7 +525,7 @@ components:
             walletAddress: '0x1234567890123456789012345678901234567890'
             blockExplorerUrl: 'https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890'
             compliance:
-              status: 'pending'
+              status: 'not_started'
               level: 'standard'
               transactionLimits:
                 single: '1000.00'
@@ -553,7 +553,7 @@ components:
             amount: '10000.000000'
             updatedAt: '2021-01-01T00:00:00Z'
         verification:
-          status: 'pending'
+          status: 'not_started'
           level: 'standard'
         transactionLimits:
           single: '1000.00'
@@ -594,7 +594,7 @@ components:
             amount: '10000.000000'
             updatedAt: '2021-01-01T00:00:00Z'
         verification:
-          status: 'pending'
+          status: 'not_started'
           level: 'standard'
         transactionLimits:
           single: '1000.00'
@@ -615,7 +615,7 @@ components:
         walletAddress: '0x1234567890123456789012345678901234567890'
         blockExplorerUrl: 'https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890'
         verification:
-          status: 'pending'
+          status: 'not_started'
           level: 'standard'
         transactionLimits:
           single: '1000.00'
@@ -644,12 +644,12 @@ components:
             email: 'william.default@example.com'
             sharePercentage: 20
             verification:
-              status: 'pending'
+              status: 'not_started'
               level: 'standard'
         walletAddress: '0x1234567890123456789012345678901234567890'
         blockExplorerUrl: 'https://amoy.polygonscan.com/address/0x1234567890123456789012345678901234567890'
         verification:
-          status: 'pending'
+          status: 'not_started'
           level: 'standard'
         transactionLimits:
           single: '1000.00'
@@ -660,7 +660,7 @@ components:
     CustomerVerificationIndividualResponse:
       value:
         customerId: '3c90c3cc-0d44-4b50-8888-8dd25736052a'
-        status: 'pending'
+        status: 'not_started'
         level: 'standard'
         statusReason:
           rejectLabels:
@@ -678,11 +678,11 @@ components:
     CustomerVerificationBusinessResponse:
       value:
         customerId: 'c85cb5ef-0574-4450-806d-195944f1e309'
-        status: 'pending'
+        status: 'not_started'
         level: 'standard'
         beneficiaries:
           id: '6737ca44-0fc7-4523-a1db-de014a865302'
-          status: 'pending'
+          status: 'not_started'
           level: 'standard'
           statusReason:
             rejectLabels:
@@ -1151,8 +1151,14 @@ components:
           type: string
           description: Verification's status.
           enum:
-            ['pending', 'approved', 'final_rejection', 'temporary_rejection']
-          example: 'pending'
+            [
+              'not_started',
+              'under_verification',
+              'approved',
+              'final_rejection',
+              'temporary_rejection',
+            ]
+          example: 'not_started'
         level:
           type: string
           description: Verification's level.
@@ -1184,9 +1190,11 @@ components:
               format: uuid
               readOnly: true
         - oneOf:
-            - $ref: '#/components/schemas/CustomerIndividual'
-              description: Customer type is individual.
-              title: Individual
+            - allOf:
+                - type: object
+                  description: Customer type is individual.
+                  title: Individual
+                - $ref: '#/components/schemas/CustomerIndividual'
             - allOf:
                 - type: object
                   description: Customer type is business.
@@ -1322,8 +1330,14 @@ components:
           type: string
           description: Customer verification's status.
           enum:
-            ['pending', 'approved', 'final_rejection', 'temporary_rejection']
-          example: 'temporary_rejection'
+            [
+              'not_started',
+              'under_verification',
+              'approved',
+              'final_rejection',
+              'temporary_rejection',
+            ]
+          example: 'not_started'
         level:
           type: string
           description: Customer verification's level.
@@ -1394,8 +1408,15 @@ components:
               status:
                 type: string
                 description: Beneficiary's status.
-                enum: [pending, approved, final_rejection, temporary_rejection]
-                example: 'pending'
+                enum:
+                  [
+                    not_started,
+                    under_verification,
+                    approved,
+                    final_rejection,
+                    temporary_rejection,
+                  ]
+                example: 'not_started'
               level:
                 type: string
                 description: Beneficiary's level.

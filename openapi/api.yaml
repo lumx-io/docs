@@ -37,7 +37,13 @@ paths:
       tags:
         - Customers
       summary: Create a customer
-      description: This endpoint creates a customer.
+      description: |
+        This endpoint creates a customer.
+
+        <small>We only accept individuals or business with individuals beneficiaries on this endpoint.
+        If the business has beneficiaries that are also companies, the **only** way to complete the KYB is via link.
+        For company customers, you must provide beneficiary information for individuals with 20% or greater ownership.</small>
+
       requestBody:
         content:
           application/json:

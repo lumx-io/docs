@@ -709,6 +709,17 @@ components:
           payment:
             rail: 'pix'
             brCode: '00020126580014br.gov.bcb.pix0136123e4567-e89b-12d3-a456-4266141740005204000053039865802BR5915Test Merchant6009Sao Paulo62070503***63041234'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOnrampProcessingExample:
@@ -723,6 +734,17 @@ components:
           payment:
             rail: 'pix'
             brCode: '00020126580014br.gov.bcb.pix0136123e4567-e89b-12d3-a456-4266141740005204000053039865802BR5915Test Merchant6009Sao Paulo62070503***63041234'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOnrampSuccessExample:
@@ -754,6 +776,17 @@ components:
           blockchain:
             transactionHash: '0x1234567890123456789012345678901234567890'
             blockExplorerUrl: 'https://amoy.polygonscan.com/tx/0x1234567890123456789012345678901234567890'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOnrampFailedExample:
@@ -769,6 +802,17 @@ components:
             rail: 'pix'
             brCode: '00020126580014br.gov.bcb.pix0136123e4567-e89b-12d3-a456-4266141740005204000053039865802BR5915Test Merchant6009Sao Paulo62070503***63041234'
           error: {}
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOfframpAwaitingFundsExample:
@@ -782,19 +826,41 @@ components:
           status: 'awaiting_funds'
           payment:
             rail: 'pix'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOfframpProcessingExample:
       value:
         id: '123e4567-e89b-12d3-a456-426614174003'
         customerId: '3c90c3cc-0d44-4b50-8888-8dd25736052a'
-        type: 'on_ramp'
+        type: 'off_ramp'
         request:
           $ref: '#/components/examples/TransactionOfframpRequestExample/value'
         state:
           status: 'processing'
           payment:
             rail: 'pix'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOfframpSuccessExample:
@@ -825,6 +891,17 @@ components:
           blockchain:
             transactionHash: '0x1234567890123456789012345678901234567890'
             blockExplorerUrl: 'https://amoy.polygonscan.com/tx/0x1234567890123456789012345678901234567890'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionOfframpFailedExample:
@@ -839,6 +916,17 @@ components:
           payment:
             rail: 'pix'
           error: {}
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
         createdAt: '2024-03-20T15:30:00Z'
         updatedAt: '2024-03-20T15:30:05Z'
     TransactionTransferProcessingExample:
@@ -853,6 +941,17 @@ components:
           amount: '1000.000000'
         state:
           status: 'processing'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
     TransactionTransferSuccessExample:
       value:
         id: '123e4567-e89b-12d3-a456-426614174004'
@@ -868,6 +967,17 @@ components:
           blockchain:
             transactionHash: '0x1234567890123456789012345678901234567890'
             blockExplorerUrl: 'https://amoy.polygonscan.com/tx/0x1234567890123456789012345678901234567890'
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
     TransactionTransferFailedExample:
       value:
         id: '123e4567-e89b-12d3-a456-426614174004'
@@ -881,6 +991,17 @@ components:
         state:
           status: 'failed'
           error: {}
+        partnerFees:
+          id: '123e4567-e89b-12d3-a456-426614174004'
+          walletAddress: '0x76b74209f3542d172ca1575b5b18064594360299'
+          name: 'Partner Fee Example'
+          isDefault: false
+          fees:
+            onRampPercentage: '1.5'
+            offRampPercentage: '1.5'
+            onRampFlat: '2.0'
+            offRampFlat: '2.0'
+          createdAt: '2024-03-20T15:30:00Z'
     TransactionOnrampRequestExample:
       value:
         sourceCurrency: 'BRL'
@@ -1644,6 +1765,8 @@ components:
         state:
           type: object
           description: Transaction's current state. See examples for more details.
+        partnerFees:
+          $ref: '#/components/schemas/PartnerFeeResponse'
     TransactionOnRampRequest:
       allOf:
         - oneOf:
@@ -1766,6 +1889,8 @@ components:
         state:
           type: object
           description: On-ramp operation's current state. See examples for more details.
+        partnerFees:
+          $ref: '#/components/schemas/PartnerFeeResponse'
     TransactionOffRampRequest:
       allOf:
         - oneOf:
@@ -1917,6 +2042,8 @@ components:
         state:
           type: object
           description: Off-ramp operation's current state. See examples for more details.
+        partnerFees:
+          $ref: '#/components/schemas/PartnerFeeResponse'
     TransactionTransferRequest:
       type: object
       properties:
@@ -1994,6 +2121,8 @@ components:
         state:
           type: object
           description: Transfer operation's current state. See examples for more details.
+        partnerFees:
+          $ref: '#/components/schemas/PartnerFeeResponse'
     TransactionTimestamps:
       type: object
       properties:

@@ -976,7 +976,6 @@ components:
         - oneOf:
             - $ref: '#/components/schemas/CustomerIndividual'
               description: Customer type is individual.
-              title: Individual
             - allOf:
                 - type: object
                   description: Customer type is business.
@@ -1086,6 +1085,7 @@ components:
               format: date-time
               example: '2021-01-01T00:00:00Z'
     CustomerIndividual:
+      title: Individual
       type: object
       properties:
         type:

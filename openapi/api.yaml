@@ -76,7 +76,7 @@ paths:
           required: false
           schema:
             type: boolean
-          description: Whether to include balances in the response.
+          description: Whether to include balances in the response body.
       responses:
         '200':
           description: Resource successfully retrieved.
